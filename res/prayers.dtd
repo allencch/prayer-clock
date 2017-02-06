@@ -1,0 +1,6 @@
+<!ELEMENT prayers (prayer)>
+<!ELEMENT prayer (time*,text)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ATTLIST prayer title CDATA #REQUIRED>
+<!ATTLIST prayer easter CDATA #IMPLIED>

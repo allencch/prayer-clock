@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<!DOCTYPE prayers SYSTEM "prayers.dtd">
+<prayers>
+	<prayer title="Opening">
+		<text>O God, come to my aid.
+O Lord, make haste to help me.</text>
+	</prayer>
+	<prayer title="Angelus">
+		<time>6:00:00</time>
+		<time>12:00:00</time>
+		<time>18:00:00</time>
+		<text>V. The Angel of the Lord declared to Mary. 
+R. And she conceived of the Holy Spirit. 
+
+Hail Mary, full of grace, the Lord is with thee; blessed art thou among women and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen. 
+
+V. Behold the handmaid of the Lord.
+R. Be it done unto me according to Thy word. 
+
+[b]Hail Mary.[/b]
+
+V. And the Word was made Flesh.
+R. And dwelt among us. 
+
+[b]Hail Mary.[/b]
+
+Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ. 
+
+[i]Let us pray.[/i]
+Pour forth, we beseech Thee, O Lord, Thy grace into our hearts; that we, to whom the incarnation of Christ, Thy Son, was made known by the message of an angel, may by His Passion and Cross be brought to the glory of His Resurrection, through the same Christ Our Lord.
+
+Amen.</text>
+	</prayer>
+	<prayer title="3 O'Clock Prayer">
+		<time>15:00:00</time>
+		<text>You expired, Jesus, but the source of life gushed forth for souls and the ocean of mercy opened up for the whole world. O Fountain of Life, unfathomable Divine Mercy, envelop the whole world and empty Yourself out upon us.
+
+O Blood and Water, which gushed forth from the Heart of Jesus as a fountain of mercy for us, I trust in You. (3 times)</text>
+	</prayer>
+	
+	<prayer title="Regina Caeli">
+		<time>6:00:00</time>
+		<time>12:00:00</time>
+		<time>18:00:00</time>
+		<text>Queen of Heaven, rejoice, Alleluia.
+For He whom you did merit to bear, Alleluia.         
+
+Has risen, as he said, Alleluia.
+Pray for us to God, Alleluia.
+
+Rejoice and be glad, O Virgin Mary, Alleluia.
+For the Lord has truly risen, Alleluia.
+
+[i]Let us pray.[/i] 
+O God, who gave joy to the world through the resurrection of Thy Son, our Lord Jesus Christ, grant we beseech Thee, that through the intercession of the Virgin Mary, His Mother, we may obtain the joys of everlasting life. Through the same Christ our Lord.
+
+Amen.</text>
+	</prayer>
+	<prayer title="Divine Mercy Novena 1st Day" easter="-2">
+		<text>"[b]Today bring to Me all mankind, especially all sinners[/b],
+
+and immerse them in the ocean of My mercy. In this way you will console Me in the bitter grief into which the loss of souls plunges Me."
+
+Most Merciful Jesus, whose very nature it is to have compassion on us and to forgive us, do not look upon our sins but upon our trust which we place in Your infinite goodness. Receive us all into the abode of Your Most Compassionate Heart, and never let us escape from It. We beg this of You by Your love which unites You to the Father and the Holy Spirit.
+
+Eternal Father, turn Your merciful gaze upon all mankind and especially upon poor sinners, all enfolded in the Most Compassionate Heart of Jesus. For the sake of His sorrowful Passion show us Your mercy, that we may praise the omnipotence of Your mercy for ever and ever. Amen.</text>
+	</prayer>
+	<prayer title="Divine Mercy Novena 2nd Day" easter="-1">
+		<text>"[b]Today bring to Me the Souls of Priests and Religious[/b],
+
+and immerse them in My unfathomable mercy. It was they who gave me strength to endure My bitter Passion. Through them as through channels My mercy flows out upon mankind."
+
+Most Merciful Jesus, from whom comes all that is good, increase Your grace in men and women consecrated to Your service,* that they may perform worthy works of mercy; and that all who see them may glorify the Father of Mercy who is in heaven.
+
+Eternal Father, turn Your merciful gaze upon the company of chosen ones in Your vineyard -- upon the souls of priests and religious; and endow them with the strength of Your blessing. For the love of the Heart of Your Son in which they are enfolded, impart to them Your power and light, that they may be able to guide others in the way of salvation and with one voice sing praise to Your boundless mercy for ages without end. Amen.
+
+    * In the original text, Saint Faustina uses the pronoun "us" since she was offering this prayer as a consecrated religious sister. The wording adapted here is intended to make the prayer suitable for universal use.</text>
+    </prayer>
+    <prayer title="Divine Mercy Novena 3rd Day" easter="0">
+    	<text>"[b]Today bring to Me all Devout and Faithful Souls[/b],
+
+and immerse them in the ocean of My mercy. These souls brought me consolation on the Way of the Cross. They were a drop of consolation in the midst of an ocean of bitterness." 
+
+Most Merciful Jesus, from the treasury of Your mercy, You impart Your graces in great abundance to each and all. Receive us into the abode of Your Most Compassionate Heart and never let us escape from It. We beg this grace of You by that most wondrous love for the heavenly Father with which Your Heart burns so fiercely.
+
+Eternal Father, turn Your merciful gaze upon faithful souls, as upon the inheritance of Your Son. For the sake of His sorrowful Passion, grant them Your blessing and surround them with Your constant protection. Thus may they never fail in love or lose the treasure of the holy faith, but rather, with all the hosts of Angels and Saints, may they glorify Your boundless mercy for endless ages. Amen.</text>
+	</prayer>
+	<prayer title="Divine Mercy Novena 4th Day" easter="1">
+		<text>"[b]Today bring to Me those who do not believe in God and those who do not know Me[/b], 
+
+I was thinking also of them during My bitter Passion, and their future zeal comforted My Heart. Immerse them in the ocean of My mercy."  
+
+Most compassionate Jesus, You are the Light of the whole world. Receive into the abode of Your Most Compassionate Heart the souls of those who do not believe in God and of those who as yet do not know You. Let the rays of Your grace enlighten them that they, too, together with us, may extol Your wonderful mercy; and do not let them escape from the abode which is Your Most Compassionate Heart.
+
+Eternal Father, turn Your merciful gaze upon the souls of those who do not believe in You, and of those who as yet do not know You, but who are enclosed in the Most Compassionate Heart of Jesus. Draw them to the light of the Gospel. These souls do not know what great happiness it is to love You. Grant that they, too, may extol the generosity of Your mercy for endless ages. Amen.
+
+    *Our Lord's original words here were "the pagans." Since the pontificate of Pope John XXIII, the Church has seen fit to replace this term with clearer and more appropriate terminology.</text>
+    </prayer>
+    <prayer title="Divine Mercy Novena 5th Day" easter="2">
+    	<text>"[b]Today bring to Me the Souls of those who have separated themselves from My Church*[/b],
+
+and immerse them in the ocean of My mercy. During My bitter Passion they tore at My Body and Heart, that is, My Church. As they return to unity with the Church My wounds heal and in this way they alleviate My Passion."  
+
+Most Merciful Jesus, Goodness Itself, You do not refuse light to those who seek it of You. Receive into the abode of Your Most Compassionate Heart the souls of those who have separated themselves from Your Church. Draw them by Your light into the unity of the Church, and do not let them escape from the abode of Your Most Compassionate Heart; but bring it about that they, too, come to glorify the generosity of Your mercy.
+
+Eternal Father, turn Your merciful gaze upon the souls of those who have separated themselves from Your Son's Church, who have squandered Your blessings and misused Your graces by obstinately persisting in their errors. Do not look upon their errors, but upon the love of Your own Son and upon His bitter Passion, which He underwent for their sake, since they, too, are enclosed in His Most Compassionate Heart. Bring it about that they also may glorify Your great mercy for endless ages. Amen.
+
+    *Our Lord's original words here were "heretics and schismatics," since He spoke to Saint Faustina within the context of her times. As of the Second Vatican Council, Church authorities have seen fit not to use those designations in accordance with the explanation given in the Council's Decree on Ecumenism (n.3). Every pope since the Council has reaffirmed that usage. Saint Faustina herself, her heart always in harmony with the mind of the Church, most certainly would have agreed. When at one time, because of the decisions of her superiors and father confessor, she was not able to execute Our Lord's inspirations and orders, she declared: "I will follow Your will insofar as You will permit me to do so through Your representative. O my Jesus " I give priority to the voice of the Church over the voice with which You speak to me" (497). The Lord confirmed her action and praised her for it.</text>
+    </prayer>
+    <prayer title="Divine Mercy Novena 6th Day" easter="3">
+    	<text>"[b]Today bring to Me the Meek and Humble Souls and the Souls of Little Children[/b],
+
+and immerse them in My mercy. These souls most closely resemble My Heart. They strengthened Me during My bitter agony. I saw them as earthly Angels, who will keep vigil at My altars. I pour out upon them whole torrents of grace. I favor humble souls with My confidence."    
+
+Most Merciful Jesus, You yourself have said, "Learn from Me for I am meek and humble of heart." Receive into the abode of Your Most Compassionate Heart all meek and humble souls and the souls of little children. These souls send all heaven into ecstasy and they are the heavenly Father's favorites. They are a sweet-smelling bouquet before the throne of God; God Himself takes delight in their fragrance. These souls have a permanent abode in Your Most Compassionate Heart, O Jesus, and they unceasingly sing out a hymn of love and mercy.
+
+Eternal Father, turn Your merciful gaze upon meek souls, upon humble souls, and upon little children who are enfolded in the abode which is the Most Compassionate Heart of Jesus. These souls bear the closest resemblance to Your Son. Their fragrance rises from the earth and reaches Your very throne. Father of mercy and of all goodness, I beg You by the love You bear these souls and by the delight You take in them: Bless the whole world, that all souls together may sing out the praises of Your mercy for endless ages. Amen.</text>
+	</prayer>
+	<prayer title="Divine Mercy Novena 7th Day" easter="4">
+		<text>"[b]Today bring to Me the Souls who especially venerate and glorify My Mercy*[/b],
+
+and immerse them in My mercy. These souls sorrowed most over my Passion and entered most deeply into My spirit. They are living images of My Compassionate Heart. These souls will shine with a special brightness in the next life. Not one of them will go into the fire of hell. I shall particularly defend each one of them at the hour of death."
+
+Most Merciful Jesus, whose Heart is Love Itself, receive into the abode of Your Most Compassionate Heart the souls of those who particularly extol and venerate the greatness of Your mercy. These souls are mighty with the very power of God Himself. In the midst of all afflictions and adversities they go forward, confident of Your mercy; and united to You, O Jesus, they carry all mankind on their shoulders. These souls will not be judged severely, but Your mercy will embrace them as they depart from this life.
+
+Eternal Father, turn Your merciful gaze upon the souls who glorify and venerate Your greatest attribute, that of Your fathomless mercy, and who are enclosed in the Most Compassionate Heart of Jesus. These souls are a living Gospel; their hands are full of deeds of mercy, and their hearts, overflowing with joy, sing a canticle of mercy to You, O Most High! I beg You O God:
+
+Show them Your mercy according to the hope and trust they have placed in You. Let there be accomplished in them the promise of Jesus, who said to them that during their life, but especially at the hour of death, the souls who will venerate this fathomless mercy of His, He, Himself, will defend as His glory. Amen.
+
+    *The text leads one to conclude that in the first prayer directed to Jesus, Who is the Redeemer, it is "victim" souls and contemplatives that are being prayed for; those persons, that is, that voluntarily offered themselves to God for the salvation of their neighbor (see Col 1:24; 2 Cor 4:12). This explains their close union with the Savior and the extraordinary efficacy that their invisible activity has for others. In the second prayer, directed to the Father from whom comes "every worthwhile gift and every genuine benefit,"we recommend the "active" souls, who promote devotion to The Divine Mercy and exercise with it all the other works that lend themselves to the spiritual and material uplifting of their brethren.</text>
+    </prayer>
+    <prayer title="Divine Mercy Novena 8th Day" easter="5">
+    	<text>"[b]Today bring to Me the Souls who are in the prison of Purgatory[/b],
+
+and immerse them in the abyss of My mercy. Let the torrents of My Blood cool down their scorching flames. All these souls are greatly loved by Me. They are making retribution to My justice. It is in your power to bring them relief. Draw all the indulgences from the treasury of My Church and offer them on their behalf. Oh, if you only knew the torments they suffer, you would continually offer for them the alms of the spirit and pay off their debt to My justice."   
+
+Most Merciful Jesus, You Yourself have said that You desire mercy; so I bring into the abode of Your Most Compassionate Heart the souls in Purgatory, souls who are very dear to You, and yet, who must make retribution to Your justice. May the streams of Blood and Water which gushed forth from Your Heart put out the flames of Purgatory, that there, too, the power of Your mercy may be celebrated.
+
+Eternal Father, turn Your merciful gaze upon the souls suffering in Purgatory, who are enfolded in the Most Compassionate Heart of Jesus. I beg You, by the sorrowful Passion of Jesus Your Son, and by all the bitterness with which His most sacred Soul was flooded: Manifest Your mercy to the souls who are under Your just scrutiny. Look upon them in no other way but only through the Wounds of Jesus, Your dearly beloved Son; for we firmly believe that there is no limit to Your goodness and compassion. Amen. </text>
+	</prayer>
+	<prayer title="Divine Mercy Novena 9th Day" easter="6">
+		<text>"[b]Today bring to Me the Souls who have become Lukewarm[/b],
+
+and immerse them in the abyss of My mercy. These souls wound My Heart most painfully. My soul suffered the most dreadful loathing in the Garden of Olives because of lukewarm souls. They were the reason I cried out: 'Father, take this cup away from Me, if it be Your will.' For them, the last hope of salvation is to run to My mercy." 
+
+Most compassionate Jesus, You are Compassion Itself. I bring lukewarm souls into the abode of Your Most Compassionate Heart. In this fire of Your pure love, let these tepid souls who, like corpses, filled You with such deep loathing, be once again set aflame. O Most Compassionate Jesus, exercise the omnipotence of Your mercy and draw them into the very ardor of Your love, and bestow upon them the gift of holy love, for nothing is beyond Your power.
+
+Eternal Father, turn Your merciful gaze upon lukewarm souls who are nonetheless enfolded in the Most Compassionate Heart of Jesus. Father of Mercy, I beg You by the bitter Passion of Your Son and by His three-hour agony on the Cross: Let them, too, glorify the abyss of Your mercy. Amen.  </text>
+	</prayer>
+	<prayer title="Act of Consecration to the Holy Spirit">
+		<text>On my knees before the great multitude of heavenly witnesses, I offer myself, soul and body to You, Eternal Spirit of God. 
+		
+I adore the brightness of Your purity, the unerring keenness of Your justice, and the might of Your love. You are the Strength and Light of my soul. 
+
+In You I live and move and am. I desire never to grieve You by unfaithfulness to grace and I pray with all my heart to be kept from the smallest sin against You. 
+
+Mercifully guard my every thought and grant that I may always watch for Your light, and listen to Your voice, and follow Your gracious inspirations. 
+
+I cling to You and give myself to You and ask You, by Your compassion to watch over me in my weakness. 
+
+Holding the pierced Feet of Jesus and looking at His Five Wounds, and trusting in His Precious Blood and adoring His opened Side and stricken Heart, I implore You, Adorable Spirit, Helper of my infirmity, to keep me in Your grace that I may never sin against You. 
+
+Give me grace, O Holy Spirit, Spirit of the Father and the Son to say to You always and everywhere, "Speak Lord for Your servant heareth." Amen.</text>	
+	</prayer>
+	<prayer title="Prayer for the Seven Gifts of the Holy Spirit">
+		<text>O Lord Jesus Christ Who, before ascending into heaven did promise to send the Holy Spirit to finish Your work in the souls of Your Apostles and Disciples, deign to grant the same Holy Spirit to me that He may perfect in my soul, the work of Your grace and Your love. 
+
+Grant me the Spirit of Wisdom that I may despise the perishable things of this world and aspire only after the things that are eternal, the Spirit of Understanding to enlighten my mind with the light of Your divine truth, the Spirit of Counsel that I may ever choose the surest way of pleasing God and gaining heaven, the Spirit of Fortitude that I may bear my cross with You and that I may overcome with courage all the obstacles that oppose my salvation, the Spirit of Knowledge that I may know God and know myself and grow perfect in the science of the Saints, the Spirit of Piety that I may find the service of God sweet and amiable, and the Spirit of Fear that I may be filled with a loving reverence towards God and may dread in any way to displease Him. 
+
+Mark me, dear Lord, with the sign of Your true disciples and animate me in all things with Your Spirit. Amen. </text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 1st Day" easter="40">
+		<text>Holy Spirit! Lord of Light! From Your clear celestial height, Your pure beaming radiance give!
+
+[b]The Holy Spirit[/b]
+
+Only one thing is important -- eternal salvation. Only one thing, therefore, is to be feared--sin. Sin is the result of ignorance, weakness, and indifference. The Holy Spirit is the Spirit of Light, of Strength, and of Love. With His sevenfold gifts He enlightens the mind, strengthens the will, and inflames the heart with love of God. To ensure our salvation we ought to invoke the Divine Spirit daily, for "The Spirit helpeth our infirmity. We know not what we should pray for as we ought. But the Spirit Himself asketh for us."
+
+Prayer
+
+Almighty and eternal God, Who hast vouchsafed to regenerate us by water and the Holy Spirit, and hast given us forgiveness all sins, vouchsafe to send forth from heaven upon us your sevenfold Spirit, the Spirit of Wisdom and Understanding, the Spirit of Counsel and Fortitude, the Spirit of Knowledge and Piety, and fill us with the Spirit of Holy Fear. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 2nd Day" easter="41">
+		<text>Come. Father of the poor. Come, treasures which endure; Come, Light of all that live!
+
+[b]The Gift of Fear[/b]
+
+The gift of Fear fills us with a sovereign respect for God, and makes us dread nothing so much as to offend Him by sin. It is a fear that arises, not from the thought of hell, but from sentiments of reverence and filial submission to our heavenly Father. It is the fear that is the beginning of wisdom, detaching us from worldly pleasures that could in any way separate us from God. "They that fear the Lord will prepare their hearts, and in His sight will sanctify their souls."
+
+Prayer
+
+Come, O blessed Spirit of Holy Fear, penetrate my inmost heart, that I may set you, my Lord and God, before my face forever, help me to shun all things that can offend You, and make me worthy to appear before the pure eyes of Your Divine Majesty in heaven, where You live and reign in the unity of the ever Blessed Trinity, God world without end. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 3rd Day" easter="42">
+		<text>Thou, of all consolers best, Visiting the troubled breast, Dost refreshing peace bestow.
+
+[b]The Gift of Piety[/b]
+
+The gift of Piety begets in our hearts a filial affection for God as our most loving Father. It inspires us to love and respect for His sake persons and things consecrated to Him, as well as those who are vested with His authority, His Blessed Mother and the Saints, the Church and its visible Head, our parents and superiors, our country and its rulers. He who is filled with the gift of Piety finds the practice of his religion, not a burdensome duty, but a delightful service. Where there is love, there is no labor.
+
+Prayer
+
+Come, O Blessed Spirit of Piety, possess my heart. Enkindle therein such a love for God, that I may find satisfaction only in His service, and for His sake lovingly submit to all legitimate authority. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 4th Day" easter="43">
+		<text>Thou in toil art comfort sweet, Pleasant coolness in the heat, solace in the midst of woe.
+
+[b]The Gift of Fortitude[/b]
+
+By the gift of Fortitude the soul is strengthened against natural fear, and supported to the end in the performance of duty. Fortitude imparts to the will an impulse and energy which move it to under take without hesitancy the most arduous tasks, to face dangers, to trample under foot human respect, and to endure without complaint the slow martyrdom of even lifelong tribulation. "He that shall persevere unto the end, he shall be saved."
+
+Prayer
+
+Come, O Blessed Spirit of Fortitude, uphold my soul in time of trouble and adversity, sustain my efforts after holiness, strengthen my weakness, give me courage against all the assaults of my enemies, that I may never be overcome and separated from Thee, my God and greatest Good. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 5th Day" easter="44">
+		<text>Light immortal! Light Divine! Visit Thou these hearts of Thine, And our inmost being fill!
+
+[b]The Gift of Knowledge[/b]
+
+The gift of Knowledge enables the soul to evaluate created things at their true worth--in their relation to God. Knowledge unmasks the pretense of creatures, reveals their emptiness, and points out their only true purpose as instruments in the service of God. It shows us the loving care of God even in adversity, and directs us to glorify Him in every circumstance of life. Guided by its light, we put first things first, and prize the friendship of God beyond all else. "Knowledge is a fountain of life to him that possesseth it."
+
+Prayer
+
+Come, O Blessed Spirit of Knowledge, and grant that I may perceive the will of the Father; show me the nothingness of earthly things, that I may realize their vanity and use them only for Thy glory and my own salvation, looking ever beyond them to Thee, and Thy eternal rewards. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 6th Day" easter="45">
+		<text>If Thou take Thy grace away, nothing pure in man will stay, All his good is turn'd to ill.
+
+[b]The Gift of Understanding[/b]
+
+Understanding, as a gift of the Holy Spirit, helps us to grasp the meaning of the truths of our holy religion. By Faith we know them, but by Understanding we learn to appreciate and relish them. It enables us to penetrate the inner meaning of revealed truths and through them to be quickened to newness of life. Our faith ceases to be sterile and inactive, but inspires a mode of life that bears eloquent testimony to the faith that is in us; we begin to "walk worthy of God in all things pleasing, and increasing in the knowledge of God."
+
+Prayer
+
+Come, O Spirit of Understanding, and enlighten our minds, that we may know and believe all the mysteries of salvation; and may merit at last to see the eternal light in Thy Light; and in the light of glory to have a clear vision of Thee and the Father and the Son. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 7th Day" easter="46">
+		<text>Heal our wounds--our strength renews; On our dryness pour Thy dew, Wash the stains of guilt away.
+
+[b]The Gift of Counsel[/b]
+
+The gift of Counsel endows the soul with supernatural prudence, enabling it to judge promptly and rightly what must done, especially in difficult circumstances. Counsel applies the principles furnished by Knowledge and Understanding to the innumerable concrete cases that confront us in the course of our daily duty as parents, teachers, public servants, and Christian citizens. Counsel is supernatural common sense, a priceless treasure in the quest of salvation. "Above all these things, pray to the Most High, that He may direct thy way in truth."
+
+Prayer
+
+Come, O Spirit of Counsel, help and guide me in all my ways, that I may always do Thy holy will. Incline my heart to that which is good; turn it away from all that is evil, and direct me by the straight path of Thy commandments to that goal of eternal life for which I long.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 8th Day" easter="47">
+		<text>Bend the stubborn heart and will, melt the frozen warm the chill. Guide the steps that go astray!
+
+[b]The Gift of Wisdom[/b]
+
+Embodying all the other gifts, as charity embraces all the other virtues, Wisdom is the most perfect of the gifts. Of wisdom it is written "all good things came to me with her, and innumerable riches through her hands." It is the gift of Wisdom that strengthens our faith, fortifies hope, perfects charity, and promotes the practice of virtue in the highest degree. Wisdom enlightens the mind to discern and relish things divine, in the appreciation of which earthly joys lose their savor, whilst the Cross of Christ yields a divine sweetness according to the words of the Saviour: "Take up thy cross and follow me, for my yoke is sweet and my burden light.
+
+Prayer
+
+Come, O Spirit of Wisdom, and reveal to my soul the mysteries of heavenly things, their exceeding greatness, power and beauty. Teach me to love them above and beyond all the passing joys and satisfactions of earth. Help me to attain them and possess them for ever. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES. 
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Novena to the Holy Spirit 9th Day" easter="48">
+		<text>Thou, on those who evermore Thee confess and Thee Adore, in Thy sevenfold gift, Descend; Give Them Comfort when they die; Give them Life with Thee on high; Give them joys which never end. Amen
+
+[b]The Fruits of the Holy Spirit[/b]
+
+The gifts of the Holy Spirit perfect the supernatural virtues by enabling us to practice them with greater docility to divine inspiration. As we grow in the knowledge and love of God under the direction of the Holy Spirit, our service becomes more sincere and generous, the practice of virtue more perfect. Such acts of virtue leave the heart filled with joy and consolation and are known as Fruits of the Holy Spirit. These Fruits in turn render the practice of virtue more attractive and become a powerful incentive for still greater efforts in the service of God, to serve Whom is to reign.
+
+Prayer
+
+Come, O Divine Spirit, fill my heart with Thy heavenly fruits, Thy charity, joy, peace, patience, benignity, goodness, faith, mildness, and temperance, that I may never weary in the service of God, but by continued faithful submission to Thy inspiration may merit to be united eternally with Thee in the love of the Father and the Son. Amen.
+
+Our Father and Hail Mary ONCE. 
+Glory be to the Father SEVEN TIMES.
+Act of Consecration, Prayer for the Seven Gifts</text>
+	</prayer>
+	<prayer title="Act of Faith">
+		<text>O my God, I firmly believe that Thou art one God in three Divine Person, Father, Son, and Holy Spirit; I believe that Thy Divine Son became man, and died for our sins, and that He will come to judge the living and the dead. I believe these and all the truths which the Holy Catholic Church teaches, because Thou hast revealed them, who canst neither deceive nor be deceived. Amen.</text>
+	</prayer>
+	<prayer title="Act of Hope">
+		<text>O my God, relying on Thy almighty power and infinite mercy and promises, I hope to obtain pardon of my sins, the help of Thy grace, and life everlasting, through the merits of Jesus Christ, my Lord and Redeemer. Amen.</text>
+	</prayer>
+	<prayer title="Act of Love">
+		<text>O my God, I love Thee above all things, with my whole heart and soul, because Thou art all good and worthy of all love. I love my neighbor as myself for the love of Thee. I forgive all who have injured me, and ask pardon of all whom I have injured. Amen.</text>
+	</prayer>
+	<prayer title="Act of Contrition">
+		<text>Oh my God, I am heartily sorry for having offended Thee and I detest all my sins because I dread the loss of heaven and the pains of hell. But most of all because they have offended Thee my God, Lord of all. I firmly resolve with the help of Thy grace to confess my sins, to do penance, and to amend my life. Amen.</text>
+	</prayer>
+	<prayer title="Act of Spiritual Communion">
+		<text>My Jesus, I believe that You are present in the Most Holy Sacrament.
+
+I love You above all things, and I desire to receive You into my soul.
+
+Since I cannot at this moment receive You sacramentally, come at least spiritually into my heart. I embrace You as if You were already there and unite myself wholly to You. Never permit me to be separated from You. Amen.</text>
+	</prayer>
+	<prayer title="Eternal Rest">
+		<text>Eternal rest grant unto them, O Lord, and let perpetual light shine upon them. May the souls of the faithful departed, through the mercy of God, rest in peace. Amen.</text>
+	</prayer>
+	<prayer title="Hail Holy Queen">
+		<text>Hail, holy Queen, Mother of Mercy!
+Our life, our sweetness, and our hope!
+To thee do we cry, poor banished children of Eve;
+to thee do we send up our sighs, mourning and weeping in this valley of tears.
+Turn, then, most gracious Advocate, thine eyes of mercy toward us;
+and after this our exile show unto us the blessed fruit of thy womb, Jesus.
+O clement, O loving, O sweet Virgin Mary.</text>
+	</prayer>
+	<prayer title="Memorare">
+		<text>Remember, most gracious Virgin Mary, that never was it known that anyone who fled to your protection, implored your help, or sought your intercession, was left unaided. Inspired with this confidence I fly to you, Virgin of virgins, my Mother. To you I come, before you I stand, sinful and sorrowful. Mother of the Word Incarnate, despise not my petitions, but in your mercy hear and answer me.
+Amen.</text>
+	</prayer>
+	<prayer title="Magnificat">
+		<text>My soul + glorifies the Lord,
+My spirit rejoices in God my Saviour.
+He looks on his servant in her nothingness;
+Henceforth all ages will call me blessed.
+The Almighty works marvels for me,
+Holy his name.
+his mercy is from age to age,
+On those who fear Him.
+He puts forth his arm in strength,
+And scatters the proud-hearted.
+He casts the mighty from their thrones,
+And raises the lowly.
+He fills the starving with good things,
+Sends the rich away empty.
+He protects Israel, his servant,
+Remember His mercy;
+The mercy promised to our fathers,
+For Abraham and his sons for ever.
+
+Glory Be</text>
+	</prayer>
+	<prayer title="Prayer to Saint Michael the Archangel">
+		<text>Saint Michael the Archangel, defend us in battle, be our protection against the wickedness and snares of the devil. May God rebuke him we humbly pray; and do thou, O Prince of the Heavenly host, by the power of God, cast into hell Satan and all evil spirits who wander through the world seeking the ruin of souls. Amen.</text>
+	</prayer>
+	<prayer title="Come Holy Spirit">
+		<text>Come Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love.
+V. Send forth your Spirit, and they shall be created.
+R. And You shall renew the face of the earth.
+
+[i]Let us pray.[/i]
+
+O, God, who by the light of the Holy Spirit, did instruct the hearts of the faithful, grant that by the same Holy Spirit we may be truly wise and ever enjoy His consolations. Through Christ Our Lord. Amen.</text>
+	</prayer>
+	<prayer title="Prayer of Saint Gertrude">
+		<text>Eternal Father, I offer Thee the most Precious Blood of Thy Divine Son, Jesus Christ, in union with the Masses said throughout the world today, for all the Holy Souls in Purgatory, for sinners everywhere, for sinners in the Universal Church, for those in my own home and within my family. Amen.</text>
+	</prayer>
+	<prayer title="The Guardian Angel Prayer">
+		<text>Angel of God, my guardian dear, to whom His love entrusts me here, ever this day [night] be at my side to light and guard, to rule and guide. Amen.</text>
+	</prayer>
+	<prayer title="Jesus Prayer">
+		<text>O Lord Jesus Christ, Son of God, have mercy on me, a sinner.</text>
+	</prayer>
+	<prayer title="Morning Offering to the Sacred Heart">
+		<text>O Jesus, through the Immaculate Heart of Mary, I offer You my prayers, works, joys and sufferings of this day for all the intentions of Your Sacred Heart, in union with the Holy Sacrifice of the Mass throughout the world, in reparation for my sins, for the intentions of all our associates, and in particular for the intentions of our Holy Father for this month.</text>
+	</prayer>
+	<prayer title="Novena to Saint Anthony to Find a Lost Article">
+		<text>St. Anthony, perfect imitator of Jesus, who received from God the special power of restoring lost things, grant that I may find [name the item] which has been lost. At least restore to me peace and tranquility of mind, the loss of which has afflicted me even more than my material loss. To this favor, I ask another of you: that I may always remain in possession of the true good that is God. Let me rather lose all things than lose God, my supreme good. Let me never suffer the loss of my greatest treasure, eternal life with God. Amen.</text>
+	</prayer>
+	<prayer title="Grace Before Meals">
+		<text>Bless us, O Lord, and these Thy gifts, which we are about to receive from Thy bounty, through Christ our Lord. Amen.</text>
+	</prayer>
+	<prayer title="Grace After Meals">
+		<text>We give Thee thanks, Almighty God, for all thy benefits, Who livest and reignest, world without end. Amen.
+
+Vouchsafe, O Lord, to reward with eternal life, all those who do us good for Thy name's sake. Amen.
+
+V. Let us bless the Lord. 
+R. Thanks be to God.
+
+May the souls of the faithful departed, through the mercy of God, rest in peace. Amen.</text>
+	</prayer>
+</prayers>
