@@ -1,9 +1,0 @@
-Package: prayer-clock
-Version: 2.0.0
-Section: Miscellaneous - Graphical
-Priority: optional
-Architecture: i386
-Depends: libgtk2.0 (>=2.0), libgtkmm (>=2.4)
-Maintainer: Allen Choong <allen dot choong at gmail dot com>
-Description: Prayer Clock
- Prayer reminder, contains Angelus and 3 O'clock Prayer
