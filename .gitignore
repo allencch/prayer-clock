@@ -7,3 +7,7 @@ install-sh
 depcomp
 configure
 build
+screenshots
+*.exe
+arch/
+debian/
