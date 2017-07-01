@@ -1,2 +1,2 @@
-SUBDIRS = src doc res
-EXTRA_DIST = doc res
+SUBDIRS = src res
+EXTRA_DIST = res
