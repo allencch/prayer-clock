@@ -47,8 +47,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fstream>
 #include <vector>
 
- //#include <gtk/gtk.h>
- //#include <glib.h>
 #include <gtkmm.h>
 
 #include "prayer.h"
@@ -63,7 +61,7 @@ char** g_argv;
 class Resources {
 public:
   Resources() {
-    title = "Prayer Clock 3.0.0";
+    title = "Prayer Clock";
 
     prayerXml = "prayers.xml";
     icon = "prayer-clock.png";
@@ -156,9 +154,6 @@ public:
 };
 
 Resources g_res;
-
-
-
 
 class StringToTextbufferConverter {
 public:
@@ -316,7 +311,7 @@ public:
 
 
     //Connect quit signal
-    Glib::RefPtr<Gtk::Action> quitAction = Glib::RefPtr<Gtk::Action>::cast_static(refBuilder->get_object("QuitAction"));
+    Glib::RefPtr<Gtk::ImageMenuItem> quitAction = Glib::RefPtr<Gtk::ImageMenuItem>::cast_static(refBuilder->get_object("menuQuit"));
     quitAction->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::quit));
 
 
@@ -340,9 +335,6 @@ public:
       }
     }
 
-
-
-
     //Update prayer based on time
     Glib::signal_timeout().connect(sigc::mem_fun(*this,&PrayerClock::timeout),1000);
 
@@ -350,9 +342,7 @@ public:
     Glib::RefPtr<Gtk::StatusIcon> trayicon = Glib::RefPtr<Gtk::StatusIcon>::cast_static(refBuilder->get_object("trayicon"));
     trayicon->set_from_file(g_res.icon); //Override the glade file, so that can use different path
 
-    //trayicon->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::trayClicked));
     trayicon->signal_button_press_event().connect(sigc::mem_fun(*this,&PrayerClock::clickSignal));
-    //trayicon->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::clickSignal));
 
 #ifndef NO_TO_TRAY
     //Minimize signal
@@ -361,7 +351,7 @@ public:
 
 
     //About dialog
-    Glib::RefPtr<Gtk::Action> about = Glib::RefPtr<Gtk::Action>::cast_static(refBuilder->get_object("AboutAction"));
+    Glib::RefPtr<Gtk::ImageMenuItem> about = Glib::RefPtr<Gtk::ImageMenuItem>::cast_static(refBuilder->get_object("menuAbout"));
     about->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::about));
     aboutDialog->signal_response().connect(sigc::mem_fun(*this,&PrayerClock::dialogDestroy));
 
@@ -394,9 +384,6 @@ protected:
         break;
       }
     }
-
-
-
   }
 
   void quit() {
@@ -445,13 +432,8 @@ protected:
       mainWindow->hide();
     }
     else {
-      //mainWindow->show();
       mainWindow->deiconify();
-      //mainWindow->set_keep_above(); //true
-      //mainWindow->set_keep_above(false);
-      mainWindow->present(); //gtk3
-
-      //mainWindow->raise(); //keep above does not work in gtkmm, so use this one.
+      mainWindow->present();
     }
   }
 
@@ -461,92 +443,10 @@ protected:
   }
 
   bool minimize(GdkEventWindowState* event) {
-    //GTK3
-    //Debugging purpose
-    /*switch(event->changed_mask) {
-      case GDK_WINDOW_STATE_WITHDRAWN:
-      cout<<"Changed GDK_WINDOW_STATE_WITHDRAWN "<<GDK_WINDOW_STATE_WITHDRAWN<<endl;
-      break;
-      case GDK_WINDOW_STATE_ICONIFIED:
-      cout<<"Changed GDK_WINDOW_STATE_ICONIFIED "<<GDK_WINDOW_STATE_ICONIFIED<<endl;
-      break;
-      case GDK_WINDOW_STATE_MAXIMIZED:
-      cout<<"Changed GDK_WINDOW_STATE_MAXIMIZED "<<GDK_WINDOW_STATE_MAXIMIZED<<endl;
-      break;
-      case GDK_WINDOW_STATE_STICKY:
-      cout<<"Changed GDK_WINDOW_STATE_STICKY "<<GDK_WINDOW_STATE_STICKY<<endl;
-      break;
-      case GDK_WINDOW_STATE_FULLSCREEN:
-      cout<<"Changed GDK_WINDOW_STATE_FULLSCREEN "<<GDK_WINDOW_STATE_FULLSCREEN<<endl;
-      break;
-      case GDK_WINDOW_STATE_ABOVE:
-      cout<<"Changed GDK_WINDOW_STATE_ABOVE "<<GDK_WINDOW_STATE_ABOVE<<endl;
-      break;
-      case GDK_WINDOW_STATE_BELOW:
-      cout<<"Changed GDK_WINDOW_STATE_BELOW "<<GDK_WINDOW_STATE_BELOW<<endl;
-      break;
-      case GDK_WINDOW_STATE_FOCUSED:
-      cout<<"Changed GDK_WINDOW_STATE_FOCUSED "<<GDK_WINDOW_STATE_FOCUSED<<endl;
-      break;
-      case GDK_WINDOW_STATE_TILED:
-      cout<<"Changed GDK_WINDOW_STATE_TILED "<<GDK_WINDOW_STATE_TILED<<endl;
-      break;
-      default:
-      cout<<"Changed Unknown "<<event->changed_mask<<endl;
-
-      }
-
-
-      switch(event->new_window_state) {
-      case GDK_WINDOW_STATE_WITHDRAWN:
-      cout<<"GDK_WINDOW_STATE_WITHDRAWN "<<GDK_WINDOW_STATE_WITHDRAWN<<endl;
-      break;
-      case GDK_WINDOW_STATE_ICONIFIED:
-      cout<<"New GDK_WINDOW_STATE_ICONIFIED "<<GDK_WINDOW_STATE_ICONIFIED<<endl;
-      break;
-      case GDK_WINDOW_STATE_MAXIMIZED:
-      cout<<"New GDK_WINDOW_STATE_MAXIMIZED "<<GDK_WINDOW_STATE_MAXIMIZED<<endl;
-      break;
-      case GDK_WINDOW_STATE_STICKY:
-      cout<<"New GDK_WINDOW_STATE_STICKY "<<GDK_WINDOW_STATE_STICKY<<endl;
-      break;
-      case GDK_WINDOW_STATE_FULLSCREEN:
-      cout<<"New GDK_WINDOW_STATE_FULLSCREEN "<<GDK_WINDOW_STATE_FULLSCREEN<<endl;
-      break;
-      case GDK_WINDOW_STATE_ABOVE:
-      cout<<"New GDK_WINDOW_STATE_ABOVE "<<GDK_WINDOW_STATE_ABOVE<<endl;
-      break;
-      case GDK_WINDOW_STATE_BELOW:
-      cout<<"New GDK_WINDOW_STATE_BELOW "<<GDK_WINDOW_STATE_BELOW<<endl;
-      break;
-      case GDK_WINDOW_STATE_FOCUSED:
-      cout<<"New GDK_WINDOW_STATE_FOCUSED "<<GDK_WINDOW_STATE_FOCUSED<<endl;
-      break;
-      case GDK_WINDOW_STATE_TILED:
-      cout<<"New GDK_WINDOW_STATE_TILED "<<GDK_WINDOW_STATE_TILED<<endl;
-      break;
-      default:
-      cout<<"New Unknown "<<event->new_window_state<<endl;
-
-      }//*/
-
-
-
-
     if(event->changed_mask & GDK_WINDOW_STATE_ICONIFIED &&
        (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED)) {
       mainWindow->hide();
     }
-
-
-    //GTK2
-    /*if(event->changed_mask == GDK_WINDOW_STATE_ICONIFIED &&
-      (event->new_window_state == GDK_WINDOW_STATE_ICONIFIED ||
-      event->new_window_state == (GDK_WINDOW_STATE_ICONIFIED | GDK_WINDOW_STATE_MAXIMIZED))) {
-
-      mainWindow->hide();
-      }//*/
-
     return true;
   }
 
@@ -562,7 +462,6 @@ protected:
     return false;
   }
 
-
   Prayers* prayers;
   Gtk::TreeView* treeview;
   Glib::RefPtr<Gtk::TreeSelection> select;
@@ -575,7 +474,6 @@ protected:
 };
 
 int main(int argc, char** argv) {
-  //Copy the arguments
   g_argc = argc;
   g_argv = argv;
 
