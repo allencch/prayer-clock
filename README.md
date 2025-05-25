@@ -9,6 +9,7 @@ Migrate from http://sourceforge.net/projects/prayerclock
 
 2025-05-25 5.00
 Remake with Qt6, AI assisted.
+Breaking change!! Remove `~/.local/share/prayer-clock/prayers.xml`, so that new version will be copied here.
 
 2015-11-05  3.0.3  
 Adding CXXFLAGS to the configure.ac
