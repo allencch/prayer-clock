@@ -5,7 +5,10 @@ Migrate from http://sourceforge.net/projects/prayerclock
 
 
 
-## Prayer Clock Changelog (old)
+## Prayer Clock Changelog
+
+2025-05-25 5.00
+Remake with Qt6, AI assisted.
 
 2015-11-05  3.0.3  
 Adding CXXFLAGS to the configure.ac
