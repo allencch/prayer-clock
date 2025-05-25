@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -12,7 +13,6 @@ Resources::Resources() {
 
   prayerXml = "prayers.xml";
   icon = "prayer-clock.png";
-  ui = "prayer-clock.ui";
 }
 
 void Resources::solvePath() {
@@ -50,26 +50,23 @@ void Resources::solvePath() {
   prayerXml = dest.toStdString();
 
   // 查找 .ui 和 icon 文件 (假设你的 .ui 文件名和 glade 一致)
-  string app = "../share/prayer-clock/";
+  // string app = "../share/prayer-clock/";
   string pix = "../share/pixmaps/";
-  if (QFile::exists(QString::fromStdString(app + ui))) {
-    ui = (app + ui);
+  if (QFile::exists(QString::fromStdString(pix + icon))) {
     icon = (pix + icon);
     return;
   }
 
-  app = "/usr/local/share/prayer-clock/";
+  // app = "/usr/local/share/prayer-clock/";
   pix = "/usr/local/share/pixmaps/";
-  if (QFile::exists(QString::fromStdString(app + ui))) {
-    ui = (app + ui);
+  if (QFile::exists(QString::fromStdString(pix + icon))) {
     icon = (pix + icon);
     return;
   }
 
-  app = "/usr/share/prayer-clock/";
+  // app = "/usr/share/prayer-clock/";
   pix = "/usr/share/pixmaps/";
-  if (QFile::exists(QString::fromStdString(app + ui))) {
-    ui = (app + ui);
+  if (QFile::exists(QString::fromStdString(pix + icon))) {
     icon = (pix + icon);
     return;
   }
