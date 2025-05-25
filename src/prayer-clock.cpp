@@ -3,6 +3,8 @@
 #include "Resources.hpp"
 #include "prayer-clock.hpp"
 
+#include <QScreen>
+
 int g_argc;
 char** g_argv;
 
@@ -106,6 +108,13 @@ PrayerClock::PrayerClock(QWidget *parent)
 
   // 删除事件
   connect(this, &QMainWindow::destroyed, this, &PrayerClock::quitApp); // 或者在 closeEvent 中处理
+
+  // Centering window
+  QScreen *screen = QApplication::primaryScreen();
+  QRect screenGeometry = screen->geometry();
+  int x = (screenGeometry.width() - width()) / 2;
+  int y = (screenGeometry.height() - height()) / 2;
+  move(x, y);
 }
 
 PrayerClock::~PrayerClock() {

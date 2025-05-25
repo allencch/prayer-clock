@@ -32,8 +32,20 @@
       <property name="orientation">
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
-      <widget class="QTreeView" name="prayersTreeView"/>
-      <widget class="QTextEdit" name="prayerView"/>
+      <widget class="QTreeView" name="prayersTreeView">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="prayerView">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
