@@ -148,7 +148,7 @@ void PrayerClock::quitApp() {
 }
 
 void PrayerClock::timeout() {
-  updateTimeDisplay();
+  // updateTimeDisplay();
   QTime currentTime = QTime::currentTime();
   for (int i = 0; i < prayers->list.size(); ++i) {
     if (easterSeason && prayers->list[i]->title == "Angelus") continue;
@@ -208,7 +208,7 @@ bool PrayerClock::deleteEventHandler(QCloseEvent* event) {
 
 void PrayerClock::updateTimeDisplay() {
   QDateTime currentDateTime = QDateTime::currentDateTime();
-  statusBar->showMessage(currentDateTime.toString());
+  statusBar->showMessage(currentDateTime.date().toString());
 }
 
 void PrayerClock::checkSpecialOccasion(const DateTime& today) {
