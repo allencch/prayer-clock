@@ -47,7 +47,7 @@ target_link_libraries(${EXECUTABLE_NAME} PRIVATE Qt::Core Qt::Gui Qt::Widgets ${
 
 # 设置安装路径 (可选)
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
-install(FILES ${UI_FILES} DESTINATION share/${PROJECT_NAME}) # 安装 .ui 文件 (可选)
+# install(FILES ${UI_FILES} DESTINATION share/${PROJECT_NAME}) # 安装 .ui 文件 (可选)
 
 # 如果你需要处理资源文件 (.qrc)
 # find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Xml) # 如果你使用的是 Qt 5，将 Qt6 替换为 Qt5
