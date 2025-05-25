@@ -19,12 +19,11 @@ PrayerClock::PrayerClock(QWidget *parent)
   prayerView = ui->prayerView; // 假设在 .ui 文件中 prayerView 的 objectName 是 prayerView
   statusBar = ui->statusbar;   // 假设在 .ui 文件中 statusbar 的 objectName 是 statusbar
 
-  // 获取 TreeView 和 Model
-  QTreeView* treeView = ui->prayersTreeView; // 假设在 .ui 文件中 prayersTreeView 的 objectName 是 prayersTreeView
+  // 获取 ListView 和 Model
+  QListView* listView = ui->prayersListView; // 假设在 .ui 文件中 prayersListView 的 objectName 是 prayersListView
   prayerModel = new QStandardItemModel(this);
-  treeView->setModel(prayerModel);
-  treeView->header()->setVisible(false);
-  selectModel = treeView->selectionModel();
+  listView->setModel(prayerModel);
+  selectModel = listView->selectionModel();
 
   // 处理命令行参数 (如果需要)
   QList<QString> args = QApplication::arguments();
@@ -55,8 +54,8 @@ PrayerClock::PrayerClock(QWidget *parent)
   setWindowIcon(QIcon(QString::fromStdString(g_res.icon)));
 
   // 加载祈祷文到左侧列表
-  loadPrayersToTreeView();
-  treeView->setCurrentIndex(prayerModel->index(0, 0)); // 滚动到第一个条目
+  loadPrayersToListView();
+  listView->setCurrentIndex(prayerModel->index(0, 0)); // 滚动到第一个条目
 
   // 连接列表点击信号
   connect(selectModel, &QItemSelectionModel::currentChanged, this, &PrayerClock::showPrayer);
@@ -122,7 +121,7 @@ PrayerClock::~PrayerClock() {
   delete ui;
 }
 
-void PrayerClock::loadPrayersToTreeView() {
+void PrayerClock::loadPrayersToListView() {
   prayerModel->clear();
   for (const auto& prayer : prayers->list) {
     QStandardItem* item = new QStandardItem(QString::fromStdString(prayer->title));
@@ -131,7 +130,7 @@ void PrayerClock::loadPrayersToTreeView() {
 }
 
 void PrayerClock::showPrayer() {
-  QModelIndex currentIndex = ui->prayersTreeView->currentIndex();
+  QModelIndex currentIndex = ui->prayersListView->currentIndex();
   if (currentIndex.isValid()) {
     QString selectedPrayerTitle = prayerModel->item(currentIndex.row())->text();
     for (const auto& prayer : prayers->list) {
@@ -158,7 +157,7 @@ void PrayerClock::timeout() {
     for (const auto& timeStr : prayers->list[i]->time) {
       QTime prayerTime = QTime::fromString(QString::fromStdString(timeStr), "h:m:s");
       if (currentTime.hour() == prayerTime.hour() && currentTime.minute() == prayerTime.minute() && currentTime.second() == prayerTime.second()) {
-        ui->prayersTreeView->setCurrentIndex(prayerModel->index(i, 0));
+        ui->prayersListView->setCurrentIndex(prayerModel->index(i, 0));
         trayClicked(); // 激活托盘图标
       }
     }
@@ -217,8 +216,8 @@ void PrayerClock::checkSpecialOccasion(const DateTime& today) {
   int diffEaster = easter.getDayFromEaster(today.year, today.month, today.day);
   for (int i = 0; i < prayers->list.size(); ++i) {
     if (prayers->list[i]->easter_f && prayers->list[i]->easter == diffEaster) {
-      ui->prayersTreeView->setCurrentIndex(prayerModel->index(i, 0));
-      ui->prayersTreeView->scrollTo(prayerModel->index(i, 0));
+      ui->prayersListView->setCurrentIndex(prayerModel->index(i, 0));
+      ui->prayersListView->scrollTo(prayerModel->index(i, 0));
       break;
     }
   }

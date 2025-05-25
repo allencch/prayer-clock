@@ -10,7 +10,7 @@
 #include <QMainWindow>
 #include <QDialog>
 #include <QStatusBar>
-#include <QTreeView>
+#include <QListView>
 #include <QStandardItemModel>
 #include <QItemSelectionModel>
 #include <QTextEdit>
@@ -70,7 +70,7 @@ private:
   QSystemTrayIcon* trayIcon;
 
   void updateTimeDisplay();
-  void loadPrayersToTreeView();
+  void loadPrayersToListView();
   void checkSpecialOccasion(const DateTime& today);
   Ui::MainWindow *ui;
 };
