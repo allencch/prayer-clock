@@ -1,468 +1,228 @@
-#include <cstring>
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-
-#include <gtkmm.h>
-
 #include "prayer.h"
 #include "easter.h"
-
-using namespace std;
+#include "Resources.hpp"
+#include "prayer-clock.hpp"
 
 int g_argc;
 char** g_argv;
 
-
-class Resources {
-public:
-  Resources() {
-    title = "Prayer Clock";
-
-    prayerXml = "prayers.xml";
-    icon = "prayer-clock.png";
-    glade = "prayer-clock.glade";
-  }
-
-  void solvePath() {
-    //Using glade as the default standard (portable)
-    if(exists(glade)) {
-      return;
-    }
-
-    //Else non-portable, then copy prayers.xml to the user data dir
-    //C++ cannot do the file manipulation
-    string userDir = Glib::get_user_data_dir() + "/prayer-clock";
-    if(!Glib::file_test(userDir,Glib::FILE_TEST_EXISTS|Glib::FILE_TEST_IS_DIR)) {
-      Glib::RefPtr<Gio::File> xml = Gio::File::create_for_path(userDir);
-      xml->make_directory_with_parents();
-    }
-    string dest = userDir + "/prayers.xml";
-
-    while(!exists(dest)) {
-      //Finding the prayers.xml
-      string findXml = "../share/prayer-clock/prayers.xml";
-      if(exists(findXml)) {
-        Gio::File::create_for_path(findXml)->copy(Gio::File::create_for_path(dest));
-        break;
-      }
-      findXml = "/usr/local/share/prayer-clock/prayers.xml";
-      if(exists(findXml)) {
-        Gio::File::create_for_path(findXml)->copy(Gio::File::create_for_path(dest));
-        break;
-      }
-      findXml = "/usr/share/prayer-clock/prayers.xml";
-      if(exists(findXml)) {
-        Gio::File::create_for_path(findXml)->copy(Gio::File::create_for_path(dest));
-        break;
-      }
-    }
-
-    prayerXml = dest;
-
-
-    //Check from the relative path, based on Unix structure
-    //this works on Windows also
-    string app = "../share/prayer-clock/";
-    string pix = "../share/pixmaps/";
-    if(exists( app + glade)) {
-      glade = app + glade;
-      //prayerXml = app + prayerXml;
-      icon = pix + icon;
-      return;
-    }
-
-    //Check from absolute path in local
-    app = "/usr/local/share/prayer-clock/";
-    pix = "/usr/local/share/pixmaps/";
-    if(exists(app + glade)) {
-      glade = app + glade;
-      //prayerXml = app + prayerXml;
-      icon = pix + icon;
-      return;
-    }
-
-    //Check from absolute path in usr
-    app = "/usr/share/prayer-clock/";
-    pix = "/usr/share/pixmaps/";
-    if(exists(app + glade)) {
-      glade = app + glade;
-      //prayerXml = app+prayerXml;
-      icon = pix + icon;
-      return;
-    }
-
-  }
-
-  bool exists(string filename) {
-    ifstream f(filename.c_str());
-    if(f) {
-      f.close();
-      return true;
-    }
-    return false;
-  }
-
-  string title;
-  string prayerXml;
-  string icon;
-  string glade;
-};
-
 Resources g_res;
+// #include "ui_mainwindow.h" // 假设你使用 Qt Designer 创建了 mainwindow.ui
 
-class StringToTextbufferConverter {
-public:
-  StringToTextbufferConverter(string t,Glib::RefPtr<Gtk::TextBuffer> b) {
-    text = t;
-    buffer = b;
+PrayerClock::PrayerClock(QWidget *parent)
+  : QMainWindow(parent), ui(new Ui::MainWindow), prayers(new Prayers(g_res.prayerXml.c_str())), easterSeason(false) {
+  ui->setupUi(this); // 设置从 mainwindow.ui 加载的界面
 
-    //Clear text
-    buffer->set_text("");
+  mainWindow = this; // 将 mainWindow 指向自身
+  prayerView = ui->prayerView; // 假设在 .ui 文件中 prayerView 的 objectName 是 prayerView
+  statusBar = ui->statusbar;   // 假设在 .ui 文件中 statusbar 的 objectName 是 statusbar
 
-    //Convert string to textbuffer based on tag
-    for(int i=0;i<text.size();i++) {
-      if(!isToken(text[i])) {
-        //Gtk::TextIter end = buffer->get_iter_at_offset(-1);
+  // 获取 TreeView 和 Model
+  QTreeView* treeView = ui->prayersTreeView; // 假设在 .ui 文件中 prayersTreeView 的 objectName 是 prayersTreeView
+  prayerModel = new QStandardItemModel(this);
+  treeView->setModel(prayerModel);
+  treeView->header()->setVisible(false);
+  selectModel = treeView->selectionModel();
 
-        buffer->insert_at_cursor(charToString(text[i]));
-      }
-      else {
-        //Record the iter and the tag
-        i = getTag(text,i);
-      }
-    }
-  }
-
-private:
-  bool isToken(char c) {
-    bool res = false;
-    switch(c) {
-    case '[':
-      res = true;
-      break;
-    case ']':
-      res = true;
+  // 处理命令行参数 (如果需要)
+  QList<QString> args = QApplication::arguments();
+  DateTime today;
+  int argDate = 0;
+  int argYear = 0, argMonth = 0, argDay = 0;
+  for (int i = 1; i < args.size(); ++i) {
+    if (args[i] == "-d" && i + 1 < args.size()) {
+      argDate = args[i + 1].toInt();
+      argYear = argDate / 10000;
+      argMonth = argDate / 100 - argYear * 100;
+      argDay = argDate - (argYear * 10000 + argMonth * 100);
+      today.setDate(argYear, argMonth, argDay);
       break;
     }
-    return res;
+  }
+  if (argDate == 0) {
+    today.getToday();
   }
 
-  int getTag(string& s,int i) {
-    bool close = false;
-    ++i; //by pass "["
+  // 检查复活节季节
+  Easter easter;
+  easterSeason = easter.isEasterSeason(today.year, today.month, today.day);
+  int diffEaster = easter.getDayFromEaster(today.year, today.month, today.day);
 
-    //Read until "]"
-    int j = s.find_first_of("]",i) -i;
-    if(isClose(s[i])) {
-      tags.back().end = buffer->create_mark(buffer->get_iter_at_offset(-1));
+  // 设置标题和图标
+  setWindowTitle(QString::fromStdString(g_res.title));
+  setWindowIcon(QIcon(QString::fromStdString(g_res.icon)));
 
-      //Apply tag
-      buffer->apply_tag_by_name(tags.back().name,tags.back().start->get_iter(),tags.back().end->get_iter());
-      tags.pop_back();
-    }
-    else {
-      Tag tag;
-      tag.name = s.substr(i,j);
-      tag.start = buffer->create_mark(buffer->get_iter_at_offset(-1));
-      tags.push_back(tag);
-    }
-    i += j;
+  // 加载祈祷文到左侧列表
+  loadPrayersToTreeView();
+  treeView->setCurrentIndex(prayerModel->index(0, 0)); // 滚动到第一个条目
 
+  // 连接列表点击信号
+  connect(selectModel, &QItemSelectionModel::currentChanged, this, &PrayerClock::showPrayer);
 
-    return i;
+  // 连接退出信号
+  QAction* quitAction = ui->menuQuit; // 假设在 .ui 文件中 menuQuit 的 objectName 是 menuQuit
+  connect(quitAction, &QAction::triggered, this, &PrayerClock::quitApp);
+
+  // 显示默认祈祷文
+  if (!prayers->list.empty()) {
+    prayerView->setHtml(QString::fromStdString(prayers->list[0]->text));
   }
 
-  bool isClose(char c) {
-    bool res = false;
-    if(c == '/')
-      res = true;
-    return res;
+  // 显示当前时间
+  updateTimeDisplay();
+
+  // 根据特殊节日显示祈祷文
+  checkSpecialOccasion(today);
+
+  // 定时更新时间
+  QTimer* timer = new QTimer(this);
+  connect(timer, &QTimer::timeout, this, &PrayerClock::timeout);
+  timer->start(1000);
+
+  // 系统托盘图标
+  trayIcon = new QSystemTrayIcon(QIcon(QString::fromStdString(g_res.icon)), this);
+  trayIcon->setVisible(true);
+  connect(trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
+    if (reason == QSystemTrayIcon::Trigger) {
+      trayClicked();
+    }
+  });
+
+  // 最小化信号
+  // connect(this, &QMainWindow::windowStateChanged, this, &PrayerClock::minimizeWindow);
+
+  // 关于对话框
+  aboutDialog = new QDialog(this);
+  aboutDialog->setWindowTitle("About");
+  QVBoxLayout* aboutLayout = new QVBoxLayout(aboutDialog);
+  QLabel* authorLabel = new QLabel("Catholic Prayer Clock");
+  aboutLayout->addWidget(authorLabel);
+  QPushButton* okButton = new QPushButton("OK");
+  aboutLayout->addWidget(okButton);
+  connect(okButton, &QPushButton::clicked, aboutDialog, &QDialog::close);
+  QAction* aboutAction = ui->menuAbout; // 假设在 .ui 文件中 menuAbout 的 objectName 是 menuAbout
+  connect(aboutAction, &QAction::triggered, this, &PrayerClock::aboutDialogShow);
+  connect(aboutDialog, &QDialog::finished, this, &PrayerClock::aboutDialogClosed);
+
+  // 删除事件
+  connect(this, &QMainWindow::destroyed, this, &PrayerClock::quitApp); // 或者在 closeEvent 中处理
+}
+
+PrayerClock::~PrayerClock() {
+  delete prayers;
+  delete ui;
+}
+
+void PrayerClock::loadPrayersToTreeView() {
+  prayerModel->clear();
+  for (const auto& prayer : prayers->list) {
+    QStandardItem* item = new QStandardItem(QString::fromStdString(prayer->title));
+    prayerModel->appendRow(item);
   }
+}
 
-  string charToString(char c) {
-    string res;
-    res = string(&c,1);
-    return res;
-  }
-
-
-
-  string text;
-  Glib::RefPtr<Gtk::TextBuffer> buffer;
-
-  struct Tag {
-    string name;
-    Glib::RefPtr<Gtk::TextMark> start;
-    Glib::RefPtr<Gtk::TextMark> end;
-  };
-
-  std::vector<Tag> tags;
-};
-
-class PrayerClock : public Gtk::Window {
-public:
-  PrayerClock(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder) : Gtk::Window(cobject) {
-    //Process options
-    int argDate = 0;
-    int argYear,argMonth,argDay;
-    for(int i=0;i<g_argc;i++) {
-      if(strcmp(g_argv[i],"-d") == 0) {
-        sscanf(g_argv[i+1],"%d",&argDate);
-        argYear = argDate / 10000;
-        argMonth = argDate / 100 - argYear*100;
-        argDay = argDate - (argYear* 10000 + argMonth*100);
-      }
-    }
-
-    DateTime today;
-    if(argDate) {
-      today.setDate(argYear,argMonth,argDay);
-    }
-    else {
-      today.getToday();
-    }
-
-    //Check easter season
-    Easter easter;
-    easterSeason = easter.isEasterSeason(today.year,today.month,today.day);
-
-    //Get easter date
-    int diffEaster = easter.getDayFromEaster(today.year,today.month,today.day);
-
-
-    //Get widgets
-    refBuilder->get_widget("prayerView",prayerView);
-    refBuilder->get_widget("mainWindow",mainWindow);
-    refBuilder->get_widget("aboutDialog",aboutDialog);
-    refBuilder->get_widget("statusbar",statusbar);
-
-
-    //Find the resource files
-
-    //Set title
-    mainWindow->set_title(g_res.title);
-    mainWindow->set_icon_from_file(g_res.icon);
-
-    //Load prayers
-    prayers = new Prayers(g_res.prayerXml.c_str());
-
-    //List prayers in the left pane
-    refBuilder->get_widget("prayersTreeView",treeview);
-    Glib::RefPtr<Gtk::TreeModel> treemodel = treeview->get_model();
-
-    Glib::RefPtr<Glib::Object> gobj = refBuilder->get_object("prayerModel");
-    Glib::RefPtr<Gtk::ListStore> prayerModel = Glib::RefPtr<Gtk::ListStore>::cast_static(gobj);
-
-    for(int i=0;i<prayers->list.size();i++) {
-      Gtk::TreeIter iter = prayerModel->append();
-      iter->set_value<string>(0,prayers->list[i]->title);
-    }
-    treeview->scroll_to_row(Gtk::TreePath("0"));
-
-
-    //Connect click signal from the list
-    select = treeview->get_selection();
-    select->signal_changed().connect(sigc::mem_fun(*this,&PrayerClock::showPrayer));
-
-
-    //Connect quit signal
-    Glib::RefPtr<Gtk::ImageMenuItem> quitAction = Glib::RefPtr<Gtk::ImageMenuItem>::cast_static(refBuilder->get_object("menuQuit"));
-    quitAction->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::quit));
-
-
-    //Show the default prayer
-    StringToTextbufferConverter(prayers->list[0]->text,prayerView->get_buffer());
-
-    //Get the time
-    string strToday = today.toString();
-
-    //Display time
-    statusbar->push(strToday);
-
-
-    //Display prayer based on special occassion
-    for(int i=0;i<prayers->list.size();i++) {
-      if(prayers->list[i]->easter_f && prayers->list[i]->easter == diffEaster) {
-        char str[10];
-        sprintf(str,"%d",i);
-        treeview->set_cursor(Gtk::TreePath(str));
-        treeview->scroll_to_row(Gtk::TreePath(str));
-      }
-    }
-
-    //Update prayer based on time
-    Glib::signal_timeout().connect(sigc::mem_fun(*this,&PrayerClock::timeout),1000);
-
-    //Tray icon signal
-    Glib::RefPtr<Gtk::StatusIcon> trayicon = Glib::RefPtr<Gtk::StatusIcon>::cast_static(refBuilder->get_object("trayicon"));
-    trayicon->set_from_file(g_res.icon); //Override the glade file, so that can use different path
-
-    trayicon->signal_button_press_event().connect(sigc::mem_fun(*this,&PrayerClock::clickSignal));
-
-#ifndef NO_TO_TRAY
-    //Minimize signal
-    mainWindow->signal_window_state_event().connect(sigc::mem_fun(*this,&PrayerClock::minimize));
-#endif
-
-
-    //About dialog
-    Glib::RefPtr<Gtk::ImageMenuItem> about = Glib::RefPtr<Gtk::ImageMenuItem>::cast_static(refBuilder->get_object("menuAbout"));
-    about->signal_activate().connect(sigc::mem_fun(*this,&PrayerClock::about));
-    aboutDialog->signal_response().connect(sigc::mem_fun(*this,&PrayerClock::dialogDestroy));
-
-    //Signal on delete event
-    mainWindow->signal_delete_event().connect(sigc::mem_fun(*this,&PrayerClock::deleteEvent));
-  }
-  virtual ~PrayerClock() {
-    delete prayers;
-  }
-
-
-protected:
-  void showPrayer() {
-    Gtk::TreeIter iter = select->get_selected();
-    string selectedPrayer;
-    Gtk::TreeRow row = *iter;
-    row.get_value<string>(0,selectedPrayer);
-
-    //Show the prayer text to the textview
-    for(int i=0;i<prayers->list.size();i++) {
-      if(prayers->list[i]->title == selectedPrayer) {
-        Glib::RefPtr<Gtk::TextBuffer> buffer = prayerView->get_buffer();
-        //buffer->set_text(prayers->list[i]->text);
-        StringToTextbufferConverter(prayers->list[i]->text,prayerView->get_buffer());
-
-        //Change the status bar
-        statusbar->pop();
-        statusbar->push(prayers->list[i]->title);
-
+void PrayerClock::showPrayer() {
+  QModelIndex currentIndex = ui->prayersTreeView->currentIndex();
+  if (currentIndex.isValid()) {
+    QString selectedPrayerTitle = prayerModel->item(currentIndex.row())->text();
+    for (const auto& prayer : prayers->list) {
+      if (QString::fromStdString(prayer->title) == selectedPrayerTitle) {
+        prayerView->setHtml(QString::fromStdString(prayer->text));
+        statusBar->showMessage(QString::fromStdString(prayer->title));
         break;
       }
     }
   }
+}
 
-  void quit() {
-    Gtk::Main::quit();
-  }
+void PrayerClock::quitApp() {
+  QApplication::quit();
+}
 
-  bool timeout() {
-    //Timing
-    time_t rawtime;
-    time(&rawtime);
+void PrayerClock::timeout() {
+  updateTimeDisplay();
+  QTime currentTime = QTime::currentTime();
+  for (int i = 0; i < prayers->list.size(); ++i) {
+    if (easterSeason && prayers->list[i]->title == "Angelus") continue;
+    if (!easterSeason && prayers->list[i]->title == "Regina Caeli") continue;
 
-    struct tm* timeinfo;
-    timeinfo = localtime(&rawtime);
-    for(int i=0;i<prayers->list.size();i++) {
-      if(easterSeason) {
-        //Skip Angelus
-        if(prayers->list[i]->title == "Angelus")
-          continue;
-      }
-      else {
-        if(prayers->list[i]->title == "Regina Caeli") {
-          continue;
-        }
-      }
-      for(int j=0;j<prayers->list[i]->time.size();j++) {
-        int hour,minute,second;
-        sscanf(prayers->list[i]->time[j].c_str(),"%d:%d:%d",&hour,&minute,&second);
-
-        if(timeinfo->tm_hour == hour && timeinfo->tm_min == minute && timeinfo->tm_sec == second) {
-          char str[10];
-          sprintf(str,"%d",i);
-          treeview->set_cursor(Gtk::TreePath(str));
-
-          //Activate the tray
-          trayClicked();
-        }
+    for (const auto& timeStr : prayers->list[i]->time) {
+      QTime prayerTime = QTime::fromString(QString::fromStdString(timeStr), "h:m:s");
+      if (currentTime.hour() == prayerTime.hour() && currentTime.minute() == prayerTime.minute() && currentTime.second() == prayerTime.second()) {
+        ui->prayersTreeView->setCurrentIndex(prayerModel->index(i, 0));
+        trayClicked(); // 激活托盘图标
       }
     }
-    return true;
   }
+}
 
-  void trayClicked() {
-    //toggle hide and show
-    if(mainWindow->is_visible()) {
-      mainWindow->iconify();
-      mainWindow->hide();
+void PrayerClock::trayClicked() {
+  if (isVisible()) {
+    hide();
+  } else {
+    showNormal();
+    activateWindow(); // 确保窗口获得焦点
+  }
+}
+
+// void PrayerClock::minimizeWindow(QWindowStateChangeEvent* event) {
+//   if (event->oldState() != Qt::WindowMinimized && windowState() == Qt::WindowMinimized) {
+//     hide();
+//   }
+// }
+void PrayerClock::changeEvent(QEvent *event) {
+  if (event->type() == QEvent::WindowStateChange) {
+    QWindowStateChangeEvent *stateChangeEvent = static_cast<QWindowStateChangeEvent*>(event);
+    if (stateChangeEvent->oldState() != Qt::WindowMinimized && windowState() == Qt::WindowMinimized) {
+      // 窗口从非最小化状态变为最小化状态
+      hide(); // 隐藏窗口
     }
-    else {
-      mainWindow->deiconify();
-      mainWindow->present();
+    // 如果你需要处理其他状态，可以在这里添加更多条件
+    // else if (stateChangeEvent->oldState() == Qt::WindowMinimized && windowState() == Qt::WindowNoState) {
+    //     // 窗口从最小化恢复到正常状态
+    // }
+  }
+  QMainWindow::changeEvent(event); // 调用基类的实现，确保其他事件被正确处理
+}
+
+void PrayerClock::aboutDialogShow() {
+  aboutDialog->exec();
+}
+
+void PrayerClock::aboutDialogClosed(int result) {
+  aboutDialog->hide();
+}
+
+bool PrayerClock::deleteEventHandler(QCloseEvent* event) {
+  quitApp();
+  return true; // 接受关闭事件
+}
+
+void PrayerClock::updateTimeDisplay() {
+  QDateTime currentDateTime = QDateTime::currentDateTime();
+  statusBar->showMessage(currentDateTime.toString());
+}
+
+void PrayerClock::checkSpecialOccasion(const DateTime& today) {
+  Easter easter;
+  int diffEaster = easter.getDayFromEaster(today.year, today.month, today.day);
+  for (int i = 0; i < prayers->list.size(); ++i) {
+    if (prayers->list[i]->easter_f && prayers->list[i]->easter == diffEaster) {
+      ui->prayersTreeView->setCurrentIndex(prayerModel->index(i, 0));
+      ui->prayersTreeView->scrollTo(prayerModel->index(i, 0));
+      break;
     }
   }
-
-  gboolean clickSignal(GdkEventButton *evt) {
-    trayClicked();
-    return true;
-  }
-
-  bool minimize(GdkEventWindowState* event) {
-    if(event->changed_mask & GDK_WINDOW_STATE_ICONIFIED &&
-       (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED)) {
-      mainWindow->hide();
-    }
-    return true;
-  }
-
-  void about() {
-    aboutDialog->show();
-  }
-  void dialogDestroy(int id) {
-    aboutDialog->hide();
-  }
-
-  bool deleteEvent(GdkEventAny* event) { //Because not using run(), so, need to override the delete event, else it will be only minimize
-    quit();
-    return false;
-  }
-
-  Prayers* prayers;
-  Gtk::TreeView* treeview;
-  Glib::RefPtr<Gtk::TreeSelection> select;
-  Gtk::TextView* prayerView;
-  Gtk::Window* mainWindow;
-  Gtk::Dialog* aboutDialog;
-  Gtk::Statusbar* statusbar;
-  bool easterSeason;
-
-};
+}
 
 int main(int argc, char** argv) {
-  g_argc = argc;
-  g_argv = argv;
+  QApplication app(argc, argv);
 
-
-  //Find the files based on path
-  Gtk::Main kit(argc,argv);
-  PrayerClock* prayerclock;
-
-  //Find the resources
+  // 查找资源文件
   g_res.solvePath();
 
+  PrayerClock prayerClock;
+  prayerClock.show(); // 显示主窗口
 
-  Glib::RefPtr<Gtk::Builder> builder;
-  try {
-    builder = Gtk::Builder::create_from_file(g_res.glade);
-  }
-  catch(const Glib::FileError& e) {
-    cout<<e.what()<<endl;
-  }
-  catch(const Glib::MarkupError& e) {
-    cout<<e.what()<<endl;
-  }
-  catch(const Gtk::BuilderError& e) {
-    cout<<e.what()<<endl;
-  }
-
-  builder->get_widget_derived("mainWindow",prayerclock);
-
-  prayerclock->show(); //Show the program
-  Gtk::Main::run(); //Do not pass the *prayerclock as an argument, else hide() will close the program
-
-  return 0;
+  return app.exec();
 }
