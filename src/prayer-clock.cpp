@@ -108,12 +108,7 @@ PrayerClock::PrayerClock(QWidget *parent)
   // 删除事件
   connect(this, &QMainWindow::destroyed, this, &PrayerClock::quitApp); // 或者在 closeEvent 中处理
 
-  // Centering window
-  QScreen *screen = QApplication::primaryScreen();
-  QRect screenGeometry = screen->geometry();
-  int x = (screenGeometry.width() - width()) / 2;
-  int y = (screenGeometry.height() - height()) / 2;
-  move(x, y);
+  centering();
 }
 
 PrayerClock::~PrayerClock() {
@@ -170,6 +165,7 @@ void PrayerClock::trayClicked() {
   } else {
     showNormal();
     activateWindow(); // 确保窗口获得焦点
+    centering();
   }
 }
 
@@ -221,6 +217,16 @@ void PrayerClock::checkSpecialOccasion(const DateTime& today) {
       break;
     }
   }
+}
+
+void PrayerClock::centering() {
+  
+  // Centering window
+  QScreen *screen = QApplication::primaryScreen();
+  QRect screenGeometry = screen->geometry();
+  int x = (screenGeometry.width() - width()) / 2;
+  int y = (screenGeometry.height() - height()) / 2;
+  move(x, y);
 }
 
 int main(int argc, char** argv) {

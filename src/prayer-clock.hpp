@@ -72,5 +72,7 @@ private:
   void updateTimeDisplay();
   void loadPrayersToListView();
   void checkSpecialOccasion(const DateTime& today);
+  void centering();
+
   Ui::MainWindow *ui;
 };
