@@ -44,6 +44,9 @@
          <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+       </property>
       </widget>
       <widget class="QTextEdit" name="prayerView">
        <property name="sizePolicy">
@@ -56,6 +59,9 @@
         <font>
          <pointsize>11</pointsize>
         </font>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
